@@ -12,7 +12,7 @@
 
 [Defines]
   # Platform Defines
-  USE_DISPLAYDXE              = TRUE
+  USE_DISPLAYDXE              = 1
 
 [LibraryClasses.common]
   PlatformMemoryMapLib|SM6125Pkg/Devices/laurel_sprout/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
@@ -38,6 +38,9 @@
   gQcomTokenSpaceGuid.PcdMipiFrameBufferWidth|720
   gQcomTokenSpaceGuid.PcdMipiFrameBufferHeight|1560
   gQcomTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32
+
+  # Simple Init
+  gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|300
 
   # Device Info
   gSM6125TokenSpaceGuid.PcdSmbiosSystemVendor|"Xiaomi"

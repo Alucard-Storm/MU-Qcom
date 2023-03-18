@@ -10,7 +10,7 @@
 ##
 
 [BuildOptions.common]
-  *_CLANG38_AARCH64_CC_FLAGS = -Wno-unused-const-variable -Wno-sometimes-uninitialized -Wno-unaligned-access -D CLANG
+  *_CLANG38_AARCH64_CC_FLAGS = -Wno-unused-const-variable -Wno-sometimes-uninitialized -Wno-unaligned-access -Wno-deprecated-non-prototype -D CLANG
   *_*_*_CC_FLAGS = -march=armv8.2-a+crypto+rcpc
   *_*_*_PP_FLAGS = -DICC_SGI1R=ICC_SGI1R_EL1
 
@@ -41,7 +41,7 @@
 
 [PcdsFixedAtBuild.common]
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"Robotix22"
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"1.2"
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"1.3"
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareRevision|0x00170A02
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemId|"QCOM  "
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x324B44454D4F4351
@@ -81,7 +81,7 @@
   gEfiMdePkgTokenSpaceGuid.PcdDefaultTerminalType|4
 
   # Boot Manager
-  gEfiMdePkgTokenSpaceGuid.PcdPlatformBootTimeOut|2
+  gEfiMdePkgTokenSpaceGuid.PcdPlatformBootTimeOut|0
 
   # PCI Express
   gEfiMdeModulePkgTokenSpaceGuid.PcdSrIovSupport|FALSE
@@ -92,6 +92,9 @@
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdMaxAuthVariableSize|0x2800
   gEfiSecurityPkgTokenSpaceGuid.PcdUserPhysicalPresence|TRUE
+
+  # SimpleInit
+  gSimpleInitTokenSpaceGuid.PcdLoggerdUseConsole|FALSE
 
   # a PCD that controls the enumeration and connection of ConIn's. When true, ConIn is only connected once a console input is requests
   gEfiMdeModulePkgTokenSpaceGuid.PcdConInConnectOnDemand|FALSE
@@ -113,6 +116,7 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdMaxVariableSize|0x2000
 
 !include MdePkg/MdeLibs.dsc.inc
+!include SimpleInit.inc
 
 [LibraryClasses.common]
   ArmLib|ArmPkg/Library/ArmLib/ArmBaseLib.inf
@@ -146,7 +150,7 @@
   DebugAgentLib|MdeModulePkg/Library/DebugAgentLibNull/DebugAgentLibNull.inf
   DevicePathLib|MdePkg/Library/UefiDevicePathLib/UefiDevicePathLib.inf
   DebugLib|MdePkg/Library/BaseDebugLibSerialPort/BaseDebugLibSerialPort.inf
-!if $(AB_SLOT_SUPPORT) == TRUE
+!if $(AB_SLOT_SUPPORT) == 1
   BootSlotLib|GPLDrivers/Library/BootSlotLib/BootSlotLib.inf
 !endif
   DebugPrintErrorLevelLib|MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf
@@ -404,7 +408,7 @@
   MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
 
   # Graphics Driver
-!if $(USE_DISPLAYDXE) == FALSE
+!if $(USE_DISPLAYDXE) == 0
   QcomPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
 
@@ -450,17 +454,12 @@
   MdeModulePkg/Universal/EsrtFmpDxe/EsrtFmpDxe.inf
 
   QcomPkg/Drivers/ColorbarsDxe/ColorbarsDxe.inf
-  QcomPkg/Applications/SimpleInit/SimpleInit.inf
   QcomPkg/Drivers/KernelErrataPatcher/KernelErrataPatcher.inf
   QcomPkg/Drivers/GpioButtons/GpioButtons.inf
 
-!if $(AB_SLOT_SUPPORT) == TRUE
+!if $(AB_SLOT_SUPPORT) == 1
   GPLDrivers/Drivers/BootSlotDxe/BootSlotDxe.inf
   GPLDrivers/Applications/SwitchSlotsApp/SwitchSlotsApp.inf
-!endif
-
-!if $(MASS_STORAGE_SUPPORT) == TRUE
-  QcomPkg/Applications/LinuxSimpleMassStorage/LinuxSimpleMassStorage.inf
 !endif
 
   AdvLoggerPkg/AdvancedFileLogger/AdvancedFileLogger.inf

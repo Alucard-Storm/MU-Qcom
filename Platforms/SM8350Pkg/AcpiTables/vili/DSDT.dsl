@@ -1,5 +1,16 @@
 DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SM8350 ", 0x00000003)
 {
+    External (_SB_.DMMY, UnknownObj)
+    External (_SB_.DPP0, IntObj)
+    External (_SB_.DPP1, IntObj)
+    External (_SB_.MPP0, IntObj)
+    External (_SB_.MPP1, IntObj)
+    External (_SB_.PEP0, UnknownObj)
+    External (_SB_.TZ13.TPSV, UnknownObj)
+    External (_SB_.TZ13.TTC1, UnknownObj)
+    External (_SB_.TZ13.TTC2, UnknownObj)
+    External (_SB_.TZ13.TTSP, UnknownObj)
+
     Scope (_SB)
     {
         Name (PSUB, "MTP08350")
@@ -85,22 +96,31 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SM8350 ", 0x00000003)
             }
         }
 
-        Name (ESNL, 0x14)
-        Name (DBFL, 0x17)
+        Device (ABD)
+        {
+            Name (_HID, "QCOM0427")  // _HID: Hardware ID
+            Alias (PSUB, _SUB)
+            Name (_UID, Zero)  // _UID: Unique ID
+            OperationRegion (ROP1, GenericSerialBus, Zero, 0x0100)
+            Name (AVBL, Zero)
+            Method (_REG, 2, NotSerialized)  // _REG: Region Availability
+            {
+                If ((Arg0 == 0x09))
+                {
+                    AVBL = Arg1
+                }
+            }
+        }
+
         Device (PMIC)
         {
             Name (_DEP, Package (0x01)  // _DEP: Dependencies
             {
                 SPMI
             })
-            Name (_HID, "QCOM062B")  // _HID: Hardware ID
+            Name (_HID, "QCOM1A2B")  // _HID: Hardware ID
             Name (_CID, "PNP0CA3")  // _CID: Compatible ID
             Alias (PSUB, _SUB)
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                Return (0x0B)
-            }
-
             Method (PMCF, 0, NotSerialized)
             {
                 Name (CFG0, Package (0x0B)
@@ -138,32 +158,32 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SM8350 ", 0x00000003)
 
                     Package (0x02)
                     {
+                        0x05, 
+                        0x10
+                    }, 
+
+                    Package (0x02)
+                    {
                         0x10, 
                         0x10
                     }, 
 
                     Package (0x02)
                     {
-                        0x06, 
-                        0x07
+                        0x10, 
+                        0x10
                     }, 
 
                     Package (0x02)
                     {
-                        0x08, 
-                        0x09
+                        0x10, 
+                        0x10
                     }, 
 
                     Package (0x02)
                     {
-                        0x0A, 
-                        0x0B
-                    }, 
-
-                    Package (0x02)
-                    {
-                        0x0C, 
-                        0x0D
+                        0x10, 
+                        0x10
                     }
                 })
                 Return (CFG0) /* \_SB_.PMIC.PMCF.CFG0 */
@@ -172,18 +192,13 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SM8350 ", 0x00000003)
 
         Device (PM01)
         {
-            Name (_HID, "QCOM062D")  // _HID: Hardware ID
+            Name (_HID, "QCOM1A2D")  // _HID: Hardware ID
             Alias (PSUB, _SUB)
             Name (_UID, One)  // _UID: Unique ID
             Name (_DEP, Package (0x01)  // _DEP: Dependencies
             {
                 PMIC
             })
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                Return (0x0B)
-            }
-
             Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
             {
                 Name (RBUF, ResourceTemplate ()
@@ -248,7 +263,7 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SM8350 ", 0x00000003)
 
         Device (SPMI)
         {
-            Name (_HID, "QCOM060B")  // _HID: Hardware ID
+            Name (_HID, "QCOM1A0B")  // _HID: Hardware ID
             Alias (PSUB, _SUB)
             Name (_CID, "PNP0CA2")  // _CID: Compatible ID
             Name (_UID, One)  // _UID: Unique ID
@@ -1761,460 +1776,6 @@ DefinitionBlock ("", "DSDT", 2, "QCOMM ", "SM8350 ", 0x00000003)
                         }
                     })
                 }
-            }
-        }
-
-        Name (QUFN, Zero)
-        Name (HPDB, Zero)
-        Name (HPDS, Buffer (One)
-        {
-             0x00                                             // .
-        })
-        Name (PINA, Zero)
-        Name (DPPN, 0x0D)
-        Name (CCST, Buffer (One)
-        {
-             0x02                                             // .
-        })
-        Name (PORT, Buffer (One)
-        {
-             0x02                                             // .
-        })
-        Name (HIRQ, Buffer (One)
-        {
-             0x00                                             // .
-        })
-        Name (USBC, Buffer (One)
-        {
-             0x0B                                             // .
-        })
-        Name (HSFL, Buffer (One)
-        {
-             0x00                                             // .
-        })
-        Name (MUXC, Buffer (One)
-        {
-             0x00                                             // .
-        })
-        Name (DPP0, Buffer (One)
-        {
-             0x00                                             // .
-        })
-        Device (URS0)
-        {
-            Method (URSI, 0, NotSerialized)
-            {
-                If ((QUFN == Zero))
-                {
-                    Return ("QCOM0597")
-                }
-                Else
-                {
-                    Return ("QCOM0598")
-                }
-            }
-
-            Alias (URSI, _HID)
-            Name (_CID, "PNP0CA1")  // _CID: Compatible ID
-            Alias (PSUB, _SUB)
-            Name (_UID, Zero)  // _UID: Unique ID
-            Name (_CCA, Zero)  // _CCA: Cache Coherency Attribute
-            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
-            {
-                Memory32Fixed (ReadWrite,
-                    0x0A600000,         // Address Base
-                    0x000FFFFF,         // Address Length
-                    )
-            })
-            Device (USB0)
-            {
-                Name (_ADR, Zero)  // _ADR: Address
-                Name (_S0W, 0x03)  // _S0W: S0 Device Wake State
-                Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
-                {
-                    Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, )
-                    {
-                        0x000000A5,
-                    }
-                    Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, ,, )
-                    {
-                        0x000000A2,
-                    }
-                    Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, ,, )
-                    {
-                        0x00000206,
-                    }
-                    Interrupt (ResourceConsumer, Edge, ActiveHigh, SharedAndWake, ,, )
-                    {
-                        0x00000208,
-                    }
-                    Interrupt (ResourceConsumer, Edge, ActiveHigh, SharedAndWake, ,, )
-                    {
-                        0x00000209,
-                    }
-                })
-                Device (RHUB)
-                {
-                    Name (_ADR, Zero)  // _ADR: Address
-                    Device (PRT1)
-                    {
-                        Name (_ADR, One)  // _ADR: Address
-                        Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
-                        {
-                            One, 
-                            0x09, 
-                            Zero, 
-                            Zero
-                        })
-                        Name (_PLD, Package (0x01)  // _PLD: Physical Location of Device
-                        {
-                            ToPLD (
-                                PLD_Revision           = 0x2,
-                                PLD_IgnoreColor        = 0x1,
-                                PLD_Red                = 0x0,
-                                PLD_Green              = 0x0,
-                                PLD_Blue               = 0x0,
-                                PLD_Width              = 0x0,
-                                PLD_Height             = 0x0,
-                                PLD_UserVisible        = 0x1,
-                                PLD_Dock               = 0x0,
-                                PLD_Lid                = 0x0,
-                                PLD_Panel              = "BACK",
-                                PLD_VerticalPosition   = "CENTER",
-                                PLD_HorizontalPosition = "LEFT",
-                                PLD_Shape              = "VERTICALRECTANGLE",
-                                PLD_GroupOrientation   = 0x0,
-                                PLD_GroupToken         = 0x0,
-                                PLD_GroupPosition      = 0x0,
-                                PLD_Bay                = 0x0,
-                                PLD_Ejectable          = 0x0,
-                                PLD_EjectRequired      = 0x0,
-                                PLD_CabinetNumber      = 0x0,
-                                PLD_CardCageNumber     = 0x0,
-                                PLD_Reference          = 0x0,
-                                PLD_Rotation           = 0x0,
-                                PLD_Order              = 0x0,
-                                PLD_VerticalOffset     = 0xFFFF,
-                                PLD_HorizontalOffset   = 0xFFFF)
-
-                        })
-                    }
-                }
-
-                Method (_STA, 0, NotSerialized)  // _STA: Status
-                {
-                    Return (0x0F)
-                }
-
-                Method (CCVL, 0, NotSerialized)
-                {
-                    Return (CCST) /* \_SB_.CCST */
-                }
-
-                Method (HSEN, 0, NotSerialized)
-                {
-                    Return (HSFL) /* \_SB_.HSFL */
-                }
-
-                Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
-                {
-                    While (One)
-                    {
-                        Name (_T_0, Buffer (One)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                        {
-                             0x00                                             // .
-                        })
-                        CopyObject (ToBuffer (Arg0), _T_0) /* \_SB_.URS0.USB0._DSM._T_0 */
-                        If ((_T_0 == ToUUID ("ce2ee385-00e6-48cb-9f05-2edb927c4899") /* USB Controller */))
-                        {
-                            While (One)
-                            {
-                                Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                                _T_1 = ToInteger (Arg2)
-                                If ((_T_1 == Zero))
-                                {
-                                    While (One)
-                                    {
-                                        Name (_T_2, Zero)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                                        _T_2 = ToInteger (Arg1)
-                                        If ((_T_2 == Zero))
-                                        {
-                                            Return (Buffer (One)
-                                            {
-                                                 0x1D                                             // .
-                                            })
-                                            Break
-                                        }
-                                        Else
-                                        {
-                                            Return (Buffer (One)
-                                            {
-                                                 0x01                                             // .
-                                            })
-                                            Break
-                                        }
-
-                                        Break
-                                    }
-
-                                    Return (Buffer (One)
-                                    {
-                                         0x00                                             // .
-                                    })
-                                    Break
-                                }
-                                ElseIf ((_T_1 == 0x02))
-                                {
-                                    Return (Zero)
-                                    Break
-                                }
-                                ElseIf ((_T_1 == 0x03))
-                                {
-                                    Return (Zero)
-                                    Break
-                                }
-                                ElseIf ((_T_1 == 0x04))
-                                {
-                                    Return (0x02)
-                                    Break
-                                }
-                                Else
-                                {
-                                    Return (Buffer (One)
-                                    {
-                                         0x00                                             // .
-                                    })
-                                    Break
-                                }
-
-                                Break
-                            }
-                        }
-                        Else
-                        {
-                            Return (Buffer (One)
-                            {
-                                 0x00                                             // .
-                            })
-                            Break
-                        }
-
-                        Break
-                    }
-                }
-
-                Method (PHYC, 0, NotSerialized)
-                {
-                    Name (CFG0, Package (0x00) {})
-                    Return (CFG0) /* \_SB_.URS0.USB0.PHYC.CFG0 */
-                }
-            }
-        }
-
-        Device (UFN0)
-        {
-            Name (_ADR, One)  // _ADR: Address
-            Name (_S0W, 0x03)  // _S0W: S0 Device Wake State
-            Device (RHUB)
-            {
-                Name (_ADR, Zero)  // _ADR: Address
-                Device (PRT1)
-                {
-                    Name (_ADR, One)  // _ADR: Address
-                    Name (_UPC, Package (0x04)  // _UPC: USB Port Capabilities
-                    {
-                        One, 
-                        0x09, 
-                        Zero, 
-                        Zero
-                    })
-                    Name (_PLD, Package (0x01)  // _PLD: Physical Location of Device
-                    {
-                        ToPLD (
-                            PLD_Revision           = 0x2,
-                            PLD_IgnoreColor        = 0x1,
-                            PLD_Red                = 0x0,
-                            PLD_Green              = 0x0,
-                            PLD_Blue               = 0x0,
-                            PLD_Width              = 0x0,
-                            PLD_Height             = 0x0,
-                            PLD_UserVisible        = 0x1,
-                            PLD_Dock               = 0x0,
-                            PLD_Lid                = 0x0,
-                            PLD_Panel              = "BACK",
-                            PLD_VerticalPosition   = "CENTER",
-                            PLD_HorizontalPosition = "LEFT",
-                            PLD_Shape              = "VERTICALRECTANGLE",
-                            PLD_GroupOrientation   = 0x0,
-                            PLD_GroupToken         = 0x0,
-                            PLD_GroupPosition      = 0x0,
-                            PLD_Bay                = 0x0,
-                            PLD_Ejectable          = 0x0,
-                            PLD_EjectRequired      = 0x0,
-                            PLD_CabinetNumber      = 0x0,
-                            PLD_CardCageNumber     = 0x0,
-                            PLD_Reference          = 0x0,
-                            PLD_Rotation           = 0x0,
-                            PLD_Order              = 0x0,
-                            PLD_VerticalOffset     = 0xFFFF,
-                            PLD_HorizontalOffset   = 0xFFFF)
-
-                    })
-                }
-            }
-
-            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
-            {
-                Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, )
-                {
-                    0x000000A5,
-                }
-                Interrupt (ResourceConsumer, Level, ActiveHigh, SharedAndWake, ,, )
-                {
-                    0x000000A2,
-                }
-            })
-            Method (CCVL, 0, NotSerialized)
-            {
-                Return (CCST) /* \_SB_.CCST */
-            }
-
-            Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
-            {
-                While (One)
-                {
-                    Name (_T_0, Buffer (One)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                    {
-                         0x00                                             // .
-                    })
-                    CopyObject (ToBuffer (Arg0), _T_0) /* \_SB_.UFN0._DSM._T_0 */
-                    If ((_T_0 == ToUUID ("fe56cfeb-49d5-4378-a8a2-2978dbe54ad2") /* Unknown UUID */))
-                    {
-                        While (One)
-                        {
-                            Name (_T_1, Zero)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_1 = ToInteger (Arg2)
-                            If ((_T_1 == Zero))
-                            {
-                                While (One)
-                                {
-                                    Name (_T_2, Zero)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                                    _T_2 = ToInteger (Arg1)
-                                    If ((_T_2 == Zero))
-                                    {
-                                        Return (Buffer (One)
-                                        {
-                                             0x03                                             // .
-                                        })
-                                        Break
-                                    }
-                                    Else
-                                    {
-                                        Return (Buffer (One)
-                                        {
-                                             0x01                                             // .
-                                        })
-                                        Break
-                                    }
-
-                                    Break
-                                }
-
-                                Return (Buffer (One)
-                                {
-                                     0x00                                             // .
-                                })
-                                Break
-                            }
-                            ElseIf ((_T_1 == One))
-                            {
-                                Return (0x20)
-                                Break
-                            }
-                            Else
-                            {
-                                Return (Buffer (One)
-                                {
-                                     0x00                                             // .
-                                })
-                                Break
-                            }
-
-                            Break
-                        }
-                    }
-                    ElseIf ((_T_0 == ToUUID ("18de299f-9476-4fc9-b43b-8aeb713ed751") /* Unknown UUID */))
-                    {
-                        While (One)
-                        {
-                            Name (_T_3, Zero)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                            _T_3 = ToInteger (Arg2)
-                            If ((_T_3 == Zero))
-                            {
-                                While (One)
-                                {
-                                    Name (_T_4, Zero)  // _T_x: Emitted by ASL Compiler, x=0-9, A-Z
-                                    _T_4 = ToInteger (Arg1)
-                                    If ((_T_4 == Zero))
-                                    {
-                                        Return (Buffer (One)
-                                        {
-                                             0x03                                             // .
-                                        })
-                                        Break
-                                    }
-                                    Else
-                                    {
-                                        Return (Buffer (One)
-                                        {
-                                             0x01                                             // .
-                                        })
-                                        Break
-                                    }
-
-                                    Break
-                                }
-
-                                Return (Buffer (One)
-                                {
-                                     0x00                                             // .
-                                })
-                                Break
-                            }
-                            ElseIf ((_T_3 == One))
-                            {
-                                Return (0x39)
-                                Break
-                            }
-                            Else
-                            {
-                                Return (Buffer (One)
-                                {
-                                     0x00                                             // .
-                                })
-                                Break
-                            }
-
-                            Break
-                        }
-                    }
-                    Else
-                    {
-                        Return (Buffer (One)
-                        {
-                             0x00                                             // .
-                        })
-                        Break
-                    }
-
-                    Break
-                }
-            }
-
-            Method (PHYC, 0, NotSerialized)
-            {
-                Name (CFG0, Package (0x00) {})
-                Return (CFG0) /* \_SB_.UFN0.PHYC.CFG0 */
             }
         }
 

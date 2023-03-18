@@ -183,18 +183,16 @@ READ_LOCK_STATUS   = TRUE
   }
 
   INF QcomPkg/Drivers/ColorbarsDxe/ColorbarsDxe.inf
-  INF QcomPkg/Applications/SimpleInit/SimpleInit.inf
   INF QcomPkg/Drivers/KernelErrataPatcher/KernelErrataPatcher.inf
   INF QcomPkg/Drivers/GpioButtons/GpioButtons.inf
 
-!if $(AB_SLOT_SUPPORT) == TRUE
+!if $(AB_SLOT_SUPPORT) == 1
   INF GPLDrivers/Drivers/BootSlotDxe/BootSlotDxe.inf
   INF GPLDrivers/Applications/SwitchSlotsApp/SwitchSlotsApp.inf
 !endif
 
-!if $(MASS_STORAGE_SUPPORT) == TRUE
-  INF QcomPkg/Applications/LinuxSimpleMassStorage/LinuxSimpleMassStorage.inf
-!endif
+  # Simple Init GUI
+  INF src/main/SimpleInitMain.inf
 
 [FV.FVMAIN_COMPACT]
 FvAlignment        = 8

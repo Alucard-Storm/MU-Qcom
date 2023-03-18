@@ -12,7 +12,7 @@
 
 [Defines]
   # Platform Defines
-  AB_SLOT_SUPPORT             = TRUE
+  AB_SLOT_SUPPORT             = 1
 
 [LibraryClasses.common]
   PlatformMemoryMapLib|SM8350Pkg/Devices/vili/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
@@ -38,6 +38,9 @@
   gQcomTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
   gQcomTokenSpaceGuid.PcdMipiFrameBufferHeight|2400
   gQcomTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32
+
+  # Simple Init
+  gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|320
 
   # Device Info
   gSM8350TokenSpaceGuid.PcdSmbiosSystemVendor|"Xiaomi"

@@ -12,13 +12,13 @@
 
 [Defines]
   # Platform Defines
-  USE_DISPLAYDXE              = TRUE
+  USE_DISPLAYDXE              = 1
 
 [LibraryClasses.common]
   PlatformMemoryMapLib|SM6115Pkg/Devices/lime/Library/PlatformMemoryMapLib/PlatformMemoryMapLib.inf
 
 [PcdsFixedAtBuild.common]
-  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000         # Starting address
+  gArmTokenSpaceGuid.PcdSystemMemoryBase|0x40000000         # Starting address
 !if $(RAM_SIZE) == 6
   gArmTokenSpaceGuid.PcdSystemMemorySize|0x180000000        # 6GB Size
 !else
@@ -38,6 +38,9 @@
   gQcomTokenSpaceGuid.PcdMipiFrameBufferWidth|1080
   gQcomTokenSpaceGuid.PcdMipiFrameBufferHeight|2340
   gQcomTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32
+
+  # Simple Init
+  gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|320
 
   # Device Info
   gSM6115TokenSpaceGuid.PcdSmbiosSystemVendor|"Xiaomi"

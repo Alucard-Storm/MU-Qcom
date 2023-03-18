@@ -24,10 +24,9 @@
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = SM6115Pkg/SM6115.fdf
-  USE_PHYSICAL_TIMER             = TRUE
-  USE_DISPLAYDXE                 = FALSE
-  MASS_STORAGE_SUPPORT           = FALSE
-  AB_SLOT_SUPPORT                = FALSE
+  USE_PHYSICAL_TIMER             = 1
+  USE_DISPLAYDXE                 = 0
+  AB_SLOT_SUPPORT                = 0
 
 !include SM6115Pkg/Devices/$(TARGET_DEVICE)/$(TARGET_DEVICE).dsc.inc
 !include QcomPkg/Qcom.dsc.inc
@@ -49,7 +48,6 @@
   PowerServicesLib|SM6115Pkg/Library/PowerServicesLib/PowerServicesLib.inf
   PlatformPeiLib|SM6115Pkg/PlatformPei/PlatformPeiLib.inf
   PlatformPrePiLib|SM6115Pkg/Library/PlatformPrePiLib/PlatformPrePiLib.inf
-  RFSProtectionLib|SM6115Pkg/Library/RFSProtectionLib/RFSProtectionLib.inf
   AcpiPlatformUpdateLib|SM6115Pkg/Library/AcpiPlatformUpdateLib/AcpiPlatformUpdateLib.inf
   MsPlatformDevicesLib|SM6115Pkg/Library/MsPlatformDevicesLib/MsPlatformDevicesLib.inf
 

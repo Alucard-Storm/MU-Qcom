@@ -27,7 +27,6 @@
 |USB|USB FN only|⚠️|
 |SD Card|No SD Card slot|❌|
 |ACPI|Still in Work|⚠️|
-|Mass Storage|No Mainline DTB|❌|
 |Slot Switch||✅|
 
 ### OS Status
@@ -43,7 +42,7 @@
 |Buttons|No Drivers yet|❔|
 |Sensors||❌|
 |Battery||❌|
-|USB|No Drivers yet|❔|
+|USB||❌|
 |Charging||❌|
 |WLAN||❌|
 |CPU|Only One Core working right now|⚠️|
@@ -81,12 +80,14 @@
 |NFC||❌|
 |Fingerprint||❌|
 |Mobile Data||❌|
-|Display Output||❌|
+|Display||✅|
 |Vibration||❌|
 
 </td></tr> </table>
 
 # Z Fold 3 5G
+
+<img align="right" src="https://github.com/Robotix22/MU-Qcom/blob/main/Pictures/Galaxy-Z-Fold3-5G.png" width="500" alt="Preview">
 
 **SOC: SM8350** <br />
 **Codename: q2q** <br />
@@ -94,8 +95,6 @@
 **Tester: [Azkali](https://github.com/Azkali/)**
 
 ### UEFI Status
-
-<img align="right" src="https://github.com/Robotix22/MU-Qcom/blob/main/Pictures/Galaxy-Z-Fold3-5G.png" width="440" alt="Preview">
 
 |Feature|Description|Working state|
 |:------|:----------|:-----------:|
@@ -107,7 +106,6 @@
 |USB|USB FN only|⚠️|
 |SD Card|No SD Card slot|❌|
 |ACPI|Still in Work|⚠️|
-|Mass Storage|No Mainline DTB|❌|
 |Slot Switch||❌|
 
 ### OS Status
@@ -125,7 +123,7 @@
 |Battery||❔|
 |USB||❔|
 |Charging||❔|
-|CPU|Only One Core working right now|⚠️|
+|CPU||❔|
 |Touchscreen||❔|
 |Bluetooh||❔|
 |GPS||❔|
@@ -185,8 +183,61 @@
 |USB|Needs a Patch|❌|
 |SD Card|Needs working Clocks|❌|
 |ACPI||❌|
-|Mass Storage|No Mainline DTB|❌|
 |Slot Switch|Not an A/B Device|❌|
+
+### OS Status
+
+<table>
+<tr><th>Windows</th><th>Linux</th></tr>
+<tr><td>
+  
+|Feature|Description|Working state|
+|:------|:----------|:-----------:|
+|Boot||❔|
+|UFS||❔|
+|Buttons||❔|
+|Sensors||❔|
+|Battery||❔|
+|USB||❔|
+|Charging||❔|
+|CPU||❔|
+|Touchscreen||❔|
+|Bluetooh||❔|
+|GPS||❔|
+|Audio||❔|
+|GPU||❔|
+|Camera||❔|
+|NFC||❔|
+|Fingerprint||❔|
+|Mobile Data||❔|
+|Display Output||❔|
+|Vibration||❔|
+
+</td><td>
+
+|Feature|Description|Working state|
+|:------|:----------|:-----------:|
+|Boot||❔|
+|UFS||❔|
+|Buttons||❔|
+|Sensors||❔|
+|Battery||❔|
+|USB||❔|
+|Charging||❔|
+|CPU||❔|
+|Touchscreen||❔|
+|Bluetooh||❔|
+|GPS||❔|
+|Audio||❔|
+|GPU||❔|
+|Camera||❔|
+|NFC||❔|
+|Fingerprint||❔|
+|Mobile Data||❔|
+|Display Output||❔|
+|Vibration||❔|
+
+</td></tr> </table>
 
 ## Mi A3
 
@@ -209,8 +260,61 @@
 |USB|Needs a Patch|❌|
 |SD Card|Needs working Clocks|❌|
 |ACPI||❌|
-|Mass Storage|No Mainline DTB|❌|
 |Slot Switch||❌|
+
+### OS Status
+
+<table>
+<tr><th>Windows</th><th>Linux</th></tr>
+<tr><td>
+  
+|Feature|Description|Working state|
+|:------|:----------|:-----------:|
+|Boot||❔|
+|UFS||❔|
+|Buttons||❔|
+|Sensors||❔|
+|Battery||❔|
+|USB||❔|
+|Charging||❔|
+|CPU||❔|
+|Touchscreen||❔|
+|Bluetooh||❔|
+|GPS||❔|
+|Audio||❔|
+|GPU||❔|
+|Camera||❔|
+|NFC||❔|
+|Fingerprint||❔|
+|Mobile Data||❔|
+|Display Output||❔|
+|Vibration||❔|
+
+</td><td>
+
+|Feature|Description|Working state|
+|:------|:----------|:-----------:|
+|Boot||❔|
+|UFS||❔|
+|Buttons||❔|
+|Sensors||❔|
+|Battery||❔|
+|USB||❔|
+|Charging||❔|
+|CPU||❔|
+|Touchscreen||❔|
+|Bluetooh||❔|
+|GPS||❔|
+|Audio||❔|
+|GPU||❔|
+|Camera||❔|
+|NFC||❔|
+|Fingerprint||❔|
+|Mobile Data||❔|
+|Display Output||❔|
+|Vibration||❔|
+
+</td></tr> </table>
 
 ## Redmi 9T
 
@@ -233,5 +337,58 @@
 |USB|Needs a Patch|❌|
 |SD Card|Needs working Clocks|❌|
 |ACPI||❌|
-|Mass Storage|No Mainline DTB|❌|
 |Slot Switch|Not an A/B Device|❌|
+
+### OS Status
+
+<table>
+<tr><th>Windows</th><th>Linux</th></tr>
+<tr><td>
+  
+|Feature|Description|Working state|
+|:------|:----------|:-----------:|
+|Boot||❔|
+|UFS||❔|
+|Buttons||❔|
+|Sensors||❔|
+|Battery||❔|
+|USB||❔|
+|Charging||❔|
+|CPU||❔|
+|Touchscreen||❔|
+|Bluetooh||❔|
+|GPS||❔|
+|Audio||❔|
+|GPU||❔|
+|Camera||❔|
+|NFC||❔|
+|Fingerprint||❔|
+|Mobile Data||❔|
+|Display Output||❔|
+|Vibration||❔|
+
+</td><td>
+
+|Feature|Description|Working state|
+|:------|:----------|:-----------:|
+|Boot||❔|
+|UFS||❔|
+|Buttons||❔|
+|Sensors||❔|
+|Battery||❔|
+|USB||❔|
+|Charging||❔|
+|CPU||❔|
+|Touchscreen||❔|
+|Bluetooh||❔|
+|GPS||❔|
+|Audio||❔|
+|GPU||❔|
+|Camera||❔|
+|NFC||❔|
+|Fingerprint||❔|
+|Mobile Data||❔|
+|Display Output||❔|
+|Vibration||❔|
+
+</td></tr> </table>
