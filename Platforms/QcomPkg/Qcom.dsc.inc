@@ -40,7 +40,7 @@
 
 [PcdsFixedAtBuild.common]
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"Robotix22"
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"1.3"
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"1.4"
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareRevision|0x00170A02
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemId|"QCOM  "
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x324B44454D4F4351
@@ -94,6 +94,9 @@
 
   # SimpleInit
   gSimpleInitTokenSpaceGuid.PcdLoggerdUseConsole|FALSE
+
+  # FrameBuffer Delay
+  gQcomTokenSpaceGuid.PcdMipiFrameBufferDelay|50         # In Microseconds
 
   # a PCD that controls the enumeration and connection of ConIn's. When true, ConIn is only connected once a console input is requests
   gEfiMdeModulePkgTokenSpaceGuid.PcdConInConnectOnDemand|FALSE
@@ -416,6 +419,7 @@
   HidPkg/HidMouseAbsolutePointerDxe/HidMouseAbsolutePointerDxe.inf
 
   # Disk IO
+  MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
   MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
   MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
   MdeModulePkg/Universal/FvSimpleFileSystemDxe/FvSimpleFileSystemDxe.inf

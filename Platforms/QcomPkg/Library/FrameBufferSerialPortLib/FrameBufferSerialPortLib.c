@@ -1,6 +1,10 @@
 #include <PiDxe.h>
 
+#include <Library/BaseLib.h>
 #include <Library/ArmLib.h>
+#include <Library/TimerLib.h>
+#include <Library/PcdLib.h>
+#include <Library/BaseMemoryLib.h>
 #include <Library/CacheMaintenanceLib.h>
 #include <Library/HobLib.h>
 #include <Library/MemoryMapHelperLib.h>
@@ -10,6 +14,8 @@
 #include <Resources/font5x12.h>
 
 #include <Library/FrameBufferSerialPortLib.h>
+
+UINTN delay = FixedPcdGet32(PcdMipiFrameBufferDelay);
 
 ARM_MEMORY_REGION_DESCRIPTOR_EX DisplayMemoryRegion;
 
@@ -126,13 +132,16 @@ paint:
   p_Position->x++;
 
   if (p_Position->x >= (int)(m_MaxPosition.x / scale_factor))
-    goto newline;
+    goto newline2;
 
   if (intstate)
     ArmEnableInterrupts();
   return;
 
 newline:
+  MicroSecondDelay( delay );
+
+newline2:
   p_Position->y += scale_factor;
   p_Position->x = 0;
   if (p_Position->y >= m_MaxPosition.y - scale_factor) {
