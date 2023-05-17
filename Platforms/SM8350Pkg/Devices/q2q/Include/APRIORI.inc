@@ -12,7 +12,7 @@ APRIORI DXE {
     INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
     INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
 
-	# Core Drivers
+    # Core Drivers
     INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
     INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
     INF ArmPkg/Drivers/ArmPsciMpServicesDxe/ArmPsciMpServicesDxe.inf
@@ -141,7 +141,7 @@ APRIORI DXE {
       SECTION UI = "DiskIoDxe"
     }
 
-	  INF MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
+    INF MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
     INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
     INF MdeModulePkg/Universal/FvSimpleFileSystemDxe/FvSimpleFileSystemDxe.inf
 
@@ -171,7 +171,7 @@ APRIORI DXE {
       SECTION UI = "BoardInfo"
     }
 
-	  INF MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf
+    INF MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf
 
     FILE DRIVER = 040E1E61-0AFB-411B-9EC9-00F3FC59CC13 {
       SECTION DXE_DEPEX = Binaries/q2q/QcomPkg/Drivers/QcomWDogDxe/QcomWDogDxe.depex
@@ -227,7 +227,7 @@ APRIORI DXE {
       SECTION UI = "DisplayDxe"
     }
 !else
-	  INF QcomPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
+    INF QcomPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
 
     FILE DRIVER = E2534A24-1D9A-4A54-AAEC-BE8836D0F45D {
@@ -275,7 +275,7 @@ APRIORI DXE {
       SECTION UI = "EmbeddedMonotonicCounter"
     }
 
-	INF EmbeddedPkg/RealTimeClockRuntimeDxe/RealTimeClockRuntimeDxe.inf
+    INF EmbeddedPkg/RealTimeClockRuntimeDxe/RealTimeClockRuntimeDxe.inf
     INF MdeModulePkg/Universal/PrintDxe/PrintDxe.inf
     INF MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf
     INF MdeModulePkg/Universal/CapsuleRuntimeDxe/CapsuleRuntimeDxe.inf
@@ -349,7 +349,7 @@ APRIORI DXE {
 
     FILE DRIVER = 5bd181db-0487-4f1a-ae73-820e165611b3 {
       SECTION DXE_DEPEX = Binaries/q2q/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.depex
-      SECTION PE32 = Binaries/q2q/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.efi
+      SECTION PE32 = Binaries/q2q/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.patched.efi
       SECTION UI = "ButtonsDxe"
     }
 

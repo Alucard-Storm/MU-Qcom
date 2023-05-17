@@ -1,4 +1,5 @@
 #include <Library/BaseLib.h>
+#include <Library/BaseMemoryLib.h>
 #include <Library/DebugLib.h>
 #include <Library/IoLib.h>
 #include <Library/PcdLib.h>
@@ -14,6 +15,15 @@ VOID InitializeSharedUartBuffers(VOID)
   ARM_MEMORY_REGION_DESCRIPTOR_EX DisplayMemoryRegion;
   LocateMemoryMapAreaByName("Display Reserved", &DisplayMemoryRegion);
 
+  // Calc FrameBuffer Size
+  UINT32 FrameBufferSize = 0;
+  UINT32 BytesPerLine = 0;
+  BytesPerLine = FixedPcdGet32(PcdMipiFrameBufferPixelBpp) / 4;
+  FrameBufferSize = FixedPcdGet32(PcdMipiFrameBufferWidth) * FixedPcdGet32(PcdMipiFrameBufferHeight) * BytesPerLine;
+
+  // Clear Screen
+  ZeroMem((VOID *)DisplayMemoryRegion.Address, FrameBufferSize);
+
   // Setup Position counter
   INTN *pFbConPosition =
       (INTN
@@ -28,7 +38,7 @@ VOID UartInit(VOID)
   SerialPortInitialize();
   InitializeSharedUartBuffers();
 
-  DEBUG((EFI_D_INFO, "\nProject Mu on Qualcomm Snapdragon Devices (AArch64)\n"));
+  DEBUG((EFI_D_INFO, "\nProject Mu on %a (AArch64)\n", (VOID *)FixedPcdGetPtr(PcdSmbiosSystemModel)));
   DEBUG(
       (EFI_D_INFO, "Firmware version %s built %a %a\n\n",
        (CHAR16 *)PcdGetPtr(PcdFirmwareVersionString), __TIME__, __DATE__));

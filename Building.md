@@ -15,6 +15,7 @@ After Cloning the repo we can now continue on Setting up the Environment. <br />
 First we need to install the needed Packages:
 ```
 ./setup_env.sh -p <Package Manager>
+# Depending on your Linux Distro use sudo if needed
 pip install --upgrade -r pip-requirements.txt
 ```
 
@@ -44,7 +45,7 @@ When then Build is done you will find a `.img` File in the root of the repo.
       ```
       Python 3.10.*
       ```
-      
+
 ### Git Unknown Switch
    1. If you have an old Version of git you may come across this Issue, So you need to install the latest version of git.
    2. I prefer using `apt` to update git but if it tells you it is already newest version you should follow [this](https://www.fosslinux.com/64522/install-git-debian-linux.htm) Guide

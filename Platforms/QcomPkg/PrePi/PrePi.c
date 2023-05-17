@@ -109,6 +109,8 @@ PrePiMain (
 
   // Initialize the Serial Port
   SerialPortInitialize ();
+
+  // Print Firmware Infos
   CharCount = AsciiSPrint (
                 Buffer,
                 sizeof (Buffer),

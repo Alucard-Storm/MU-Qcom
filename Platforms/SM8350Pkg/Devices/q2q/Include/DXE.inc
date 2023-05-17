@@ -257,12 +257,12 @@
     SECTION UI = "DisplayDxe"
   }
 !else
-	INF QcomPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
+  INF QcomPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
 
   FILE DRIVER = 5bd181db-0487-4f1a-ae73-820e165611b3 {
     SECTION DXE_DEPEX = Binaries/q2q/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.depex
-    SECTION PE32 = Binaries/q2q/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.efi
+    SECTION PE32 = Binaries/q2q/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.patched.efi
     SECTION UI = "ButtonsDxe"
   }
 
