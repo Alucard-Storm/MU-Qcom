@@ -120,13 +120,13 @@ READ_LOCK_STATUS   = TRUE
 
   INF MsGraphicsPkg/GopOverrideDxe/GopOverrideDxe.inf
   INF MsCorePkg/MuCryptoDxe/MuCryptoDxe.inf
-  INF DfciPkg/IdentityAndAuthManager/IdentityAndAuthManagerDxe.inf
+  INF DfciPkg/AuthManagerNull/AuthManagerNull.inf
   INF DfciPkg/SettingsManager/SettingsManagerDxe.inf
   INF MsGraphicsPkg/MsUiTheme/Dxe/MsUiThemeProtocol.inf
   INF MsGraphicsPkg/RenderingEngineDxe/RenderingEngineDxe.inf
   INF MsGraphicsPkg/DisplayEngineDxe/DisplayEngineDxe.inf
   INF OemPkg/BootMenu/BootMenu.inf
-  INF OemPkg/FrontPage/FrontPage.inf
+  INF RuleOverride = UI OemPkg/FrontPage/FrontPage.inf
   INF PcBdsPkg/MsBootPolicy/MsBootPolicy.inf
   INF MdeModulePkg/Universal/BootManagerPolicyDxe/BootManagerPolicyDxe.inf
   INF MdeModulePkg/Universal/RegularExpressionDxe/RegularExpressionDxe.inf
@@ -151,7 +151,7 @@ READ_LOCK_STATUS   = TRUE
   }
 
   FILE FREEFORM = PCD(gOemPkgTokenSpaceGuid.PcdLogoFile) {
-    SECTION RAW = SM6115Pkg/Include/Resources/BootLogo.bmp
+    SECTION RAW = QcomPkg/Include/Resources/BootLogo.png
     SECTION UI = "Logo"
   }
 
