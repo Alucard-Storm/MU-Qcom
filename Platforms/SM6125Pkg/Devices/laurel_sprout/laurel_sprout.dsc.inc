@@ -42,6 +42,11 @@
   # Simple Init
   gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|300
 
+!if $(USE_UART) == 1
+  # UART
+  gQcomTokenSpaceGuid.PcdDebugUartPortBase|0x4a90000
+!endif
+
   # Device Info
   gQcomTokenSpaceGuid.PcdSmbiosSystemVendor|"Xiaomi"
   gQcomTokenSpaceGuid.PcdSmbiosSystemModel|"Mi A3"
@@ -54,5 +59,3 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|1560
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|720
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|1560
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|150
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|150

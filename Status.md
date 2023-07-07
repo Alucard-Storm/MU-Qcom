@@ -26,7 +26,7 @@
 |UFS||✅|
 |Buttons|Pwr Button only in SimpleInit|⚠️|
 |USB|No USB Host & Power|⚠️|
-|SD Card||❌|
+|SD Card|Needs working SdccDxe|❌|
 |ACPI|Still in Work|⚠️|
 |Slot Switch|Not an A/B Device|❌|
 
@@ -39,7 +39,7 @@
 |Feature|Description|State|
 |:------|:----------|:---:|
 |Boot||✅|
-|UFS|Dosen't work cuz of Samsung's Partition Table|⚠️|
+|UFS|Needs Special Setup|✅|
 |Buttons||❌|
 |Sensors||❌|
 |Battery||❌|
@@ -65,7 +65,7 @@
 |Feature|Description|State|
 |:------|:----------|:---:|
 |Boot|No Storage Support yet to boot a Distro|⚠️|
-|UFS|Dosen't work cuz of Samsung's Partition Table|⚠️|
+|UFS|mainline is still unstable|❌|
 |Buttons||❌|
 |Sensors||❌|
 |Battery||❌|
@@ -264,7 +264,7 @@
 |:------|:----------|:---:|
 |Display||✅|
 |Touchscreen|Not Possible right now|❌|
-|Clocks|Resets Panel while reboot|⚠️|
+|Clocks||✅|
 |UFS|Needs a Patch|❌|
 |Buttons||✅|
 |USB|Needs a Patch|❌|

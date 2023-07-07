@@ -27,6 +27,7 @@
   USE_PHYSICAL_TIMER             = 1
   USE_DISPLAYDXE                 = 0
   AB_SLOT_SUPPORT                = 0
+  USE_UART                       = 0
 
 !include SM6115Pkg/Devices/$(TARGET_DEVICE)/$(TARGET_DEVICE).dsc.inc
 !include QcomPkg/Qcom.dsc.inc
@@ -53,7 +54,6 @@
   PlatformPrePiLib|SM6115Pkg/Library/PlatformPrePiLib/PlatformPrePiLib.inf
   AcpiPlatformUpdateLib|SM6115Pkg/Library/AcpiPlatformUpdateLib/AcpiPlatformUpdateLib.inf
   MsPlatformDevicesLib|SM6115Pkg/Library/MsPlatformDevicesLib/MsPlatformDevicesLib.inf
-  ConsoleMsgLib|SM6115Pkg/Library/ConsoleMsgLib/ConsoleMsgLib.inf
 
 [Components.common]
   SM6115Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf

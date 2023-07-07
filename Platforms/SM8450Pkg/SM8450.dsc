@@ -27,6 +27,7 @@
   USE_PHYSICAL_TIMER             = 0
   USE_DISPLAYDXE                 = 0
   AB_SLOT_SUPPORT                = 0
+  USE_UART                       = 0
 
 !include SM8450Pkg/Devices/$(TARGET_DEVICE)/$(TARGET_DEVICE).dsc.inc
 !include QcomPkg/Qcom.dsc.inc
@@ -54,7 +55,6 @@
   RFSProtectionLib|SM8450Pkg/Library/RFSProtectionLib/RFSProtectionLib.inf
   AcpiPlatformUpdateLib|SM8450Pkg/Library/AcpiPlatformUpdateLib/AcpiPlatformUpdateLib.inf
   MsPlatformDevicesLib|SM8450Pkg/Library/MsPlatformDevicesLib/MsPlatformDevicesLib.inf
-  ConsoleMsgLib|SM8450Pkg/Library/ConsoleMsgLib/ConsoleMsgLib.inf
 
 [Components.common]
   SM8450Pkg/Drivers/SmBiosTableDxe/SmBiosTableDxe.inf

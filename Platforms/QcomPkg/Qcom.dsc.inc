@@ -40,7 +40,7 @@
 
 [PcdsFixedAtBuild.common]
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVendor|L"Robotix22"
-  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"1.6"
+  gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareVersionString|L"1.7"
   gEfiMdeModulePkgTokenSpaceGuid.PcdFirmwareRevision|0x01230383
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemId|"QCOM  "
   gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiDefaultOemTableId|0x324B44454D4F4351
@@ -112,10 +112,16 @@
   # 4042708A-0F2D-4823-AC60-0D77B3111889
   gEfiMdeModulePkgTokenSpaceGuid.PcdBootManagerMenuFile|{ 0x8A, 0x70, 0x42, 0x40, 0x2D, 0x0F, 0x23, 0x48, 0xAC, 0x60, 0x0D, 0x77, 0xB3, 0x11, 0x18, 0x89 }
 
-  gOemPkgTokenSpaceGuid.PcdUefiVersionNumber|0x0000016
-  gOemPkgTokenSpaceGuid.PcdUefiBuildDate|0x20230606
+  gOemPkgTokenSpaceGuid.PcdUefiVersionNumber|0x0000017
+  gOemPkgTokenSpaceGuid.PcdUefiBuildDate|0x20230701
 
   gEfiMdeModulePkgTokenSpaceGuid.PcdMaxVariableSize|0x2000
+
+[PcdsDynamicDefault.common]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|0
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|0
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutColumn|0
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConOutRow|0
 
 !include MdePkg/MdeLibs.dsc.inc
 !include SimpleInit.inc
@@ -212,7 +218,11 @@
 !if $(TARGET) == RELEASE
   SerialPortLib|MdePkg/Library/BaseSerialPortLibNull/BaseSerialPortLibNull.inf
 !else
+!if $(USE_UART) == 1
+  SerialPortLib|QcomPkg/Library/UARTSerialPortLib/UARTSerialPortLib.inf
+!else
   SerialPortLib|QcomPkg/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
+!endif
 !endif
 
   #
@@ -361,9 +371,6 @@
   # ARM Architectural Libraries
   ArmGicArchLib|ArmPkg/Library/ArmGicArchLib/ArmGicArchLib.inf
 
-  MallocLib|QcomPkg/Library/MallocLib/MallocLib.inf
-  LodePngLib|QcomPkg/Library/LodePngLib/LodePngLib.inf
-
 [LibraryClasses.common.SEC]
   ArmGicArchLib|ArmPkg/Library/ArmGicArchSecLib/ArmGicArchSecLib.inf
   HobLib|EmbeddedPkg/Library/PrePiHobLib/PrePiHobLib.inf
@@ -440,7 +447,11 @@
     !if $(TARGET) == RELEASE
       SerialPortLib|MdePkg/Library/BaseSerialPortLibNull/BaseSerialPortLibNull.inf
     !else
+    !if $(USE_UART) == 1
+      SerialPortLib|QcomPkg/Library/UARTSerialPortLib/UARTSerialPortLib.inf
+    !else
       SerialPortLib|QcomPkg/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
+    !endif
     !endif
   }
 
@@ -512,6 +523,7 @@
   HidPkg/HidMouseAbsolutePointerDxe/HidMouseAbsolutePointerDxe.inf
 
   # Disk IO
+  MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
   MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
   MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
   MdeModulePkg/Universal/FvSimpleFileSystemDxe/FvSimpleFileSystemDxe.inf
@@ -541,6 +553,7 @@
   # Pci
   MdeModulePkg/Bus/Pci/PciBusDxe/PciBusDxe.inf
   MdeModulePkg/Bus/Pci/NvmExpressDxe/NvmExpressDxe.inf
+  MdeModulePkg/Bus/Pci/XhciDxe/XhciDxe.inf
 
   MdeModulePkg/Universal/ReportStatusCodeRouter/RuntimeDxe/ReportStatusCodeRouterRuntimeDxe.inf
   MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf

@@ -86,6 +86,11 @@
   MuUefiVersionLib|OemPkg/Library/MuUefiVersionLib/MuUefiVersionLib.inf
 
   #
+  # Null ConsoleMsg Libary
+  #
+  ConsoleMsgLib|PcBdsPkg/Library/ConsoleMsgLibNull/ConsoleMsgLibNull.inf
+
+  #
   # This is the Thermal Services Library that encapsulates the platform specific thermal information.
   #
   ThermalServicesLib|PcBdsPkg/Library/ThermalServicesLibNull/ThermalServicesLibNull.inf
@@ -130,7 +135,7 @@
   #
   # A shared place for all colors used in this package
   #
-  MsColorTableLib|MsGraphicsPkg/Library/MsColorTableLib/MsColorTableLib.inf
+  MsColorTableLib|QcomPkg/Library/MsColorTableLib/MsColorTableLib.inf
 
   #
   # Library that is attached to drivers that require networking.
@@ -150,7 +155,7 @@
   #
   # This library is for showing the main system boot graphics.
   #
-  BootGraphicsLib|QcomPkg/Library/BootGraphicsLib/BootGraphicsLib.inf
+  BootGraphicsLib|MsGraphicsPkg/Library/BootGraphicsLib/BootGraphicsLib.inf
 
   #
   # Library to support Device disable Settings  (get/set)
@@ -165,7 +170,7 @@
   #
   # BootGraphicsProviderLib that uses PCDs and raw files in the firmware volumes
   #
-  BootGraphicsProviderLib|QcomPkg/Library/BootGraphicsProviderLib/BootGraphicsProviderLib.inf
+  BootGraphicsProviderLib|OemPkg/Library/BootGraphicsProviderLib/BootGraphicsProviderLib.inf
 
   #
   # Library that platform implemented to determine boot type
@@ -222,7 +227,7 @@
   #
   # Application that presents and manages FrontPage.
   #
-  OemPkg/FrontPage/FrontPage.inf
+  QcomPkg/Applications/FrontPage/FrontPage.inf
 
   #
   # Application that presents & manages the Boot Menu Setup on Front Page.

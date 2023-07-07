@@ -38,6 +38,11 @@
   # Simple Init
   gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|320
 
+!if $(USE_UART) == 1
+  # UART
+  gQcomTokenSpaceGuid.PcdDebugUartPortBase|0x4a90000
+!endif
+
   # Device Info
   gQcomTokenSpaceGuid.PcdSmbiosSystemVendor|"Xiaomi"
   gQcomTokenSpaceGuid.PcdSmbiosSystemModel|"Redmi 9T"
@@ -50,5 +55,3 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|2340
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1080
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|2340
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|150
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|150

@@ -30,6 +30,11 @@
   # Simple Init
   gSimpleInitTokenSpaceGuid.PcdGuiDefaultDPI|300
 
+!if $(USE_UART) == 1
+  # UART
+  gQcomTokenSpaceGuid.PcdDebugUartPortBase|0x98c000
+!endif
+
   # Device Info
   gQcomTokenSpaceGuid.PcdSmbiosSystemVendor|"Samsung"
   gQcomTokenSpaceGuid.PcdSmbiosSystemModel|"Galaxy Z Fold 3"
@@ -42,5 +47,3 @@
   gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|2208
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1768
   gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|2208
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|150
-  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|150
